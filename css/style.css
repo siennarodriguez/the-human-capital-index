@@ -2,15 +2,15 @@
     background-color: #F3FAF9;
  }
 
- {
+*{
   font-family: "Source Sans Pro", sans-serif;
 }
-h1 {
-  font-weight: 900;
-}
 
+h1 {
+  font-weight: 400;
+}
 .page {
-  width: 850px;
+  width: 950px;
   background-color: white;
   margin: auto;
   padding: 50px;
@@ -39,3 +39,6 @@ h1 {
 .small-font {
   font-size: 14px;
 }
+#access {
+    margin-bottom: 20px; /* or whatever */
+  }
