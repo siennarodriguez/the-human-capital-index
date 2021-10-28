@@ -1,13 +1,14 @@
- html, body {
-    background-color: #F3FAF9;
- }
+html,
+body {
+  background-color: #92c5de;
+}
 
-*{
+* {
   font-family: "Source Sans Pro", sans-serif;
 }
 
 h1 {
-  font-weight: 400;
+  font-weight: 900;
 }
 .page {
   width: 950px;
@@ -30,8 +31,8 @@ h1 {
   padding-right: 20px;
 }
 .pure-u-1-3 {
-    margin-top: 30px;
-    height: 20vw;
+  margin-top: 30px;
+  height: 20vw;
 }
 
 .pure-g {
@@ -41,5 +42,5 @@ h1 {
   font-size: 14px;
 }
 #access {
-    margin-bottom: 20px; /* or whatever */
-  }
+  margin-bottom: 20px; /* or whatever */
+}
