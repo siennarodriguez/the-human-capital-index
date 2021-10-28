@@ -2,44 +2,61 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 800,
   "height": 500,
-  "projection": {
-    "type": "equalEarth"
-  },
   "data": {
     "url": "https://raw.githubusercontent.com/siennarodriguez/the-human-capital-index/main/js/world.json",
     "format": { "type": "topojson", "feature": "world.geo" }
   },
-  "transform": [
+  "projection": {
+    "type": "equalEarth"
+  },
+  "layer": [
     {
-      "lookup": "properties.name",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/siennarodriguez/the-human-capital-index/main/data/education_covid19_choropleth.csv"
-        },
-        "key": "Country Name",
-        "fields": ["Income Level"]
-      }
-    }
-  ],
-  "mark": { "type": "geoshape" },
-  "encoding": {
-    "color": {
-      "field": "Income Level",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "High income",
-          "Upper middle income",
-          "Lower middle income",
-          "Low income",
-          "null"
-        ],
-        "range": ["#0571b0", "#92c5de", "#ca0020", "#f4a582", "#f7f7f7"]
+      "transform": [
+        {
+          "calculate": "'Data is not available in ' + datum.properties.name",
+          "as": "note"
+        }
+      ],
+      "mark": { "type": "geoshape", "fill": "lightgray", "stroke": "white" },
+      "encoding": {
+        "tooltip": {
+          "field": "note"
+        }
       }
     },
-    "tooltip": [
-      { "field": "properties.name", "type": "nominal", "title": "Country" },
-      { "field": "Income Level", "type": "nominal" }
-    ]
-  }
+    {
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/siennarodriguez/the-human-capital-index/main/data/education_covid19_choropleth.csv"
+            },
+            "key": "Country Name",
+            "fields": ["Income Level"]
+          }
+        }
+      ],
+      "mark": { "type": "geoshape", "stroke": "white" },
+      "encoding": {
+        "color": {
+          "field": "Income Level",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "High income",
+              "Upper middle income",
+              "Lower middle income",
+              "Low income"
+            ],
+            "range": ["#0571b0", "#92c5de", "#ca0020", "#f4a582"]
+          }
+        },
+        "tooltip": [
+          { "field": "properties.name", "type": "nominal", "title": "Country" },
+          { "field": "Income Level", "type": "nominal" }
+        ]
+      }
+    }
+  ]
 }
