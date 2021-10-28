@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Human Capital Index 2020",
-  "width": "container",
+  "width": 500,
   "height": 500,
   "params": [
     {
