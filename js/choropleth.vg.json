@@ -6,7 +6,7 @@
     "type": "equalEarth"
   },
   "data": {
-    "url": "https://raw.githubusercontent.com/siennarodriguez/vis1/main/js/world.json",
+    "url": "https://raw.githubusercontent.com/siennarodriguez/the-human-capital-index/main/js/world.json",
     "format": { "type": "topojson", "feature": "world.geo" }
   },
   "transform": [
@@ -14,7 +14,7 @@
       "lookup": "properties.name",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/siennarodriguez/vis1/main/data/education_covid19_choropleth.csv"
+          "url": "https://raw.githubusercontent.com/siennarodriguez/the-human-capital-index/main/data/education_covid19_choropleth.csv"
         },
         "key": "Country Name",
         "fields": ["Income Level"]
@@ -34,7 +34,7 @@
           "Low income",
           "null"
         ],
-        "range": ["#0571b0","#92c5de", "#ca0020", "#f4a582", "#f7f7f7"]
+        "range": ["#0571b0", "#92c5de", "#ca0020", "#f4a582", "#f7f7f7"]
       }
     },
     "tooltip": [

@@ -7,14 +7,14 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/siennarodriguez/vis1/main/js/world.json",
+        "url": "https://raw.githubusercontent.com/siennarodriguez/the-human-capital-index/main/js/world.json",
         "format": { "type": "topojson", "feature": "world.geo" }
       },
       "mark": { "type": "geoshape", "fill": "lightgray", "stroke": "white" }
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/siennarodriguez/vis1/main/data/education_COVID19.csv"
+        "url": "https://raw.githubusercontent.com/siennarodriguez/the-human-capital-index/main/data/education_COVID19.csv"
       },
       "params": [
         {
