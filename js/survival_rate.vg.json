@@ -1,0 +1,184 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 600,
+  "title": "Adult Survival Rate",
+  "data": {
+    "url": "https://raw.githubusercontent.com/siennarodriguez/the-human-capital-index/main/data/hci_data_september_2020.csv"
+  },
+  "params": [
+    {
+      "name": "Population_Above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 100000000,
+        "step": 1000000,
+        "name": "Minimum Population: "
+      }
+    },
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "labels": [
+          "Show All",
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "name": "Select Continent: "
+      }
+    },
+    {
+      "name": "Gender_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "Female", "Male"],
+        "labels": ["Show All", "Female", "Male"],
+        "name": "Select Gender: "
+      }
+    }
+  ],
+  "transform": [
+    { "filter": "datum.Population > Population_Above" },
+    {
+      "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+    },
+    {
+      "filter": "Gender_selection == null || datum.Gender == Gender_selection"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "adultSurvivalRate",
+      "type": "quantitative",
+      "title": "Adult Survival Rate",
+      "axis": { "tickCount": 7 },
+      "scale": { "domain": [0.5, 1] }
+    },
+    "y": {
+      "field": "HUMAN CAPITAL INDEX 2020",
+      "type": "quantitative",
+      "title": "Human Capital Index",
+      "axis": { "tickCount": 6 },
+      "scale": { "domain": [0.2, 1] }
+    }
+  },
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "continent_highlight",
+          "select": { "type": "point", "fields": ["Continent"] },
+          "bind": "legend"
+        }
+      ],
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "field": "Population",
+          "type": "quantitative",
+          "scale": {
+            "type": "quantile"
+          },
+          "legend": { "format": ".1s" }
+        },
+        "color": {
+          "field": "Continent",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "North America",
+              "South America",
+              "Europe",
+              "Africa",
+              "Asia",
+              "Oceania"
+            ],
+            "range": [
+              "#e41a1c",
+              "#984ea3",
+              "#ff7f00",
+              "#a6cee3",
+              "#377eb8",
+              "#a65628"
+            ]
+          }
+        },
+        "opacity": {
+          "condition": { "param": "continent_highlight", "value": 0.6 },
+          "value": 0.2
+        },
+        "tooltip": [
+          { "field": "Country Name", "type": "nominal" },
+          {
+            "field": "HUMAN CAPITAL INDEX 2020",
+            "type": "quantitative",
+            "title": "HCI 2020",
+            "format": ","
+          },
+          {
+            "field": "adultSurvivalRate",
+            "type": "quantitative",
+            "title": "Adult Survival Rate",
+            "format": ","
+          },
+          { "field": "Population", "type": "quantitative", "format": "," },
+          { "field": "Income", "type": "nominal" }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": { "field": "Country Name", "type": "nominal" },
+        "color": { "value": "black" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'China' || datum['Country Name'] == 'Singapore' || datum['Country Name'] == 'Australia' || datum['Country Name'] == 'New Zealand' || datum['Country Name'] == 'Italy' || datum['Country Name'] == 'Yemen' ||  datum['Country Name'] == 'United States'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          { "field": "Country Name", "type": "nominal" },
+          {
+            "field": "HUMAN CAPITAL INDEX 2020",
+            "type": "quantitative",
+            "title": "HCI 2020",
+            "format": ","
+          },
+          {
+            "field": "adultSurvivalRate",
+            "type": "quantitative",
+            "title": "Adult Survival Rate",
+            "format": ","
+          },
+          { "field": "Population", "type": "quantitative", "format": "," },
+          { "field": "Income", "type": "nominal" }
+        ]
+      }
+    }
+  ]
+}
