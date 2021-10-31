@@ -68,14 +68,14 @@
       "type": "quantitative",
       "title": "Expected Years of School",
       "axis": { "tickCount": 6 },
-      "scale": { "domain": [4, 14] }
+      "scale": { "domain": [0, 14] }
     },
     "y": {
       "field": "HUMAN CAPITAL INDEX 2020",
       "type": "quantitative",
       "title": "Human Capital Index",
       "axis": { "tickCount": 6 },
-      "scale": { "domain": [0.2, 1] }
+      "scale": { "domain": [0, 1] }
     }
   },
   "layer": [
@@ -93,7 +93,9 @@
           "field": "Population",
           "type": "quantitative",
           "scale": {
-            "type": "quantile"
+            "type": "threshold",
+            "domain": [1000000, 10000000, 50000000, 100000000, 500000000],
+            "range": [10, 50, 150, 200, 300, 400]
           },
           "legend": { "format": ".1s" }
         },
@@ -156,7 +158,7 @@
         "color": { "value": "black" },
         "opacity": {
           "condition": {
-            "test": "datum['Country Name'] == 'China' || datum['Country Name'] == 'Singapore' || datum['Country Name'] == 'Australia' || datum['Country Name'] == 'New Zealand' || datum['Country Name'] == 'Italy' || datum['Country Name'] == 'Yemen' ||  datum['Country Name'] == 'United States'",
+            "test": "datum['Country Name'] == 'Nigeria' || datum['Country Name'] == 'Singapore' || datum['Country Name'] == 'Australia' || datum['Country Name'] == 'Ghana' ||  datum['Country Name'] == 'United States'",
             "value": 1
           },
           "value": 0

@@ -4,12 +4,17 @@ body {
 }
 
 * {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 h1 {
   font-weight: 900;
 }
+
+h2 {
+  text-transform: uppercase;
+}
+
 .page {
   width: 950px;
   background-color: white;
@@ -42,5 +47,5 @@ h1 {
   font-size: 14px;
 }
 #access {
-  margin-bottom: 20px; /* or whatever */
+  margin-bottom: 60px; /* or whatever */
 }
