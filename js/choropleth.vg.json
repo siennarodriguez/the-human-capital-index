@@ -109,6 +109,7 @@
         },
         "tooltip": [
           { "field": "Country Name", "type": "nominal", "title": "Country" },
+          { "field": "Population", "type": "quantitative", "format": "," },
           {
             "field": "HUMAN CAPITAL INDEX 2020",
             "type": "quantitative",
